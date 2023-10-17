@@ -1,7 +1,7 @@
 <?php
 
 //tugas php pertama 
-// Nomor 1
+// tugas 1
 echo " menampilkan bilngan ganjil genap ";
 
 $angka1 = 1;
