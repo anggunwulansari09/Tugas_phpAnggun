@@ -9,9 +9,9 @@ echo "1. meembuat tampilan perkalian menggunaan looping <br/>";
 echo "<br>";
 $n = 10; // Jumlah perkalian 
 
-for ($i = 1; $i <= $n; $i++) {
-    $hasil = $i * 2;
-    echo "1x2 = $hasil<br>";
+for ($i = 1; $i <= 10; $i++) {
+    $hasil = 1*$i ;
+    echo "1x $i = $hasil<br>";
 }
 
 //nomor 2 bintang kebawah
