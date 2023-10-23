@@ -5,21 +5,20 @@ echo ' Tugas  Switch Case <br/>';
 echo "<hr>";
 //echo "grade";
 echo ' Menampilkan grade : <br/>';
-$nilai = 85;
+$nilai = 50; 
 
 switch (true) {
-    case ($nilai >= 90):
-        echo "Grade A";
+    case ($nilai >= 90 && $nilai <= 100):
+        $grade = 'A';
         break;
-    case ($nilai >= 80):
-        echo "Grade B";
+    case ($nilai >= 80 && $nilai < 90):
+        $grade = 'B';
         break;
-    case ($nilai >= 70):
-        echo "Grade C";
-        break;
-    case ($nilai >= 60):
-        echo "Grade D";
+    case ($nilai >= 70 && $nilai < 80):
+        $grade = 'C';
         break;
     default:
-        echo "Grade E (Tidak Lulus)";
+        $grade = 'D';
 }
+
+echo "Grade Anda adalah: " . $grade;
