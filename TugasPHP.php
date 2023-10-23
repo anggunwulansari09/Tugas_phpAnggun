@@ -7,7 +7,6 @@ echo "<hr>";
 //nomor 1 perkalian
 echo "1. meembuat tampilan perkalian menggunaan looping <br/>";
 echo "<br>";
-$n = 10; // Jumlah perkalian 
 
 for ($i = 1; $i <= 10; $i++) {
     $hasil = 1*$i ;
