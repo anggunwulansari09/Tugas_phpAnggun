@@ -37,69 +37,53 @@
     </nav>
     <div class="card" style="border-radius: 0px;">
         <div class=" card-body">
-            <table class="table table-striped table-hover" border="1" align="center">
-                <!-- <tr style="background-color:#00c0ef;">
-                    <td>No</td>
-                    <td>Nama</td>
-                    <td>tanggal_lahir</td>
-                    <td>umur</td>
-                    <td>Alamat</td>
-                    <td>kelas</td>
-                    <td>nilai</td>
-                    <td>Hasil</td>
-                </tr> -->
-                <tbody>
-                    <?php
-                    // Data yang akan ditampilkan dalam tabel
-                    $data = file_get_contents("data.json");
-                    $students = json_decode($data);
-                    $student = array(
-                        array("No", "Nama", "Tanggal lahir", "Umur", "Alamat", "Kelas", "Nilai", "Hasil"),
-                    );
-                    $nilai = "";
+        <table border="1">
+        <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Tanggal Lahir</th>
+            <th>Umur</th>
+            <th>Alamat</th>
+            <th>Kelas</th>
+            <th>Nilai</th>
+            <th>Hasil</th>
+        </tr>
+        <?php
+        $data = file_get_contents("data.json");
+        $students = json_decode($data);
 
-                    switch (true) {
-                        case ($nilai >= 90 && $nilai <= 100):
-                            $hasil = 'A';
-                            break;
-                        case ($nilai >= 80 && $nilai < 90):
-                            $hasil = 'B';
-                            break;
-                        case ($nilai >= 70 && $nilai < 80):
-                            $hasil = 'C';
-                            break;
-                        default:
-                            $hasil = 'D';
-                    }
-                    echo "hasil " . $hasil;
+        $tahun_sekarang = 2021;
 
-                    // Membuka elemen <table> dan baris pertama (header)
-                    echo "<table border='1' class='center-table'>";
-                    
-                    // Mengisi baris pertama dengan data array pertama
-                    foreach ($student[0] as $header) {
-                        echo "<th style='background-color: #2b85ed; width: 100px; text-align: center;'>$header</th>";
-                    }
+        foreach ($students as $key => $student) {
+            $tanggal_lahir = $student->tanggal_lahir;
+            $umur = $tahun_sekarang - substr($tanggal_lahir, 0, 4);
 
-                    echo "</tr>";
+            if ($student->nilai >= 90 && $student->nilai <= 100) {
+                $hasil = 'A';
+            } elseif ($student->nilai >= 80 && $student->nilai < 90) {
+                $hasil = 'B';
+            } elseif ($student->nilai >= 70 && $student->nilai < 80) {
+                $hasil = 'C';
+            } else {
+                $hasil = 'D';
+            }
+ 
+            // Mengatur warna latar belakang baris secara bergantian
+            $color = ($key % 2 == 1) ? "white" : "#ddd";
 
-                    // Mengisi baris berikutnya dengan data dari array dengan looping for
-                    for ($i = 0; $i < count($students); $i++) {
-                        echo "<tr>";
-                        foreach ($students[$i] as $key => $value) {
-                            if ($i % 2 == 0) {
-                                echo "<td style='background-color: ##ebf6fa;'>$value</td>"; //warna abu"
-                            } else {
-                                echo "<td style='background-color: #f2f2f2;'>$value</td>";
-                            }
-                        }
-                        echo "</tr>";
-                    }
-                    // Menutup elemen <table>
-                    echo "</table>";
-                    ?>
-                </tbody>
-            </table>
+            echo '<tr style="background-color:' . $color . '">';
+            echo '<td>' . ($key + 1) . '</td>';
+            echo '<td>' . $student->nama . '</td>';
+            echo '<td>' . $student->tanggal_lahir . '</td>';
+            echo '<td>' . $umur . '</td>';
+            echo '<td>' . $student->alamat . '</td>';
+            echo '<td>' . $student->kelas . '</td>';
+            echo '<td>' . $student->nilai . '</td>';
+            echo '<td>' . $hasil . '</td>';
+            echo '</tr>';
+        }
+        ?>
+    </table>
         </div>
     </div>
 </body>
