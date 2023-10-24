@@ -68,7 +68,6 @@
                 $hasil = 'D';
             }
  
-            // Mengatur warna latar belakang baris secara bergantian
             $color = ($key % 2 == 1) ? "white" : "#ddd";
 
             echo '<tr style="background-color:' . $color . '">';
