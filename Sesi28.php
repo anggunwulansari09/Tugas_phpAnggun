@@ -18,7 +18,6 @@
             width: 32rem;
             padding-left: 2px;
             padding-right: 2px;
-            padding-bottom: 90px;
             margin-top: 100px;
             margin-left: 400px;
         }
@@ -49,9 +48,10 @@
                     <th>Hasil</th>
                 </tr>
                 <?php
+                //memasukkan filejson
                 $data = file_get_contents("data.json");
                 $students = json_decode($data);
-
+                //memasukkan umur
                 $tahun_sekarang = 2021;
 
                 foreach ($students as $key => $student) {
@@ -67,8 +67,8 @@
                     } else {
                         $hasil = 'D';
                     }
-
-                    $color = ($key % 2 == 1) ? "white" : "#ddd";
+                    
+                    $color = ($key % 2 == 1) ? "white" : "#ddd";//memasukkan warna
 
                     echo '<tr style="background-color:' . $color . '">';
                     echo '<td>' . ($key + 1) . '</td>';
