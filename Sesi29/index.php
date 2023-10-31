@@ -10,7 +10,7 @@ $query = mysqli_query($connection, "SELECT * FROM Customer");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tugas menyambungkan database</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
         .container {
             width: 800px;
@@ -18,7 +18,7 @@ $query = mysqli_query($connection, "SELECT * FROM Customer");
         }
 
         .card {
-            height: 315px;
+            height: 340px;
             box-shadow: 0px 0px 10px 2px #9ea6a7;
             width: 32rem;
             padding-left: 2px;
@@ -42,50 +42,39 @@ $query = mysqli_query($connection, "SELECT * FROM Customer");
         <a href="barang\index.php">Barang |</a>
         <a href="kategori\index.php">Kategori</a>
     </div>
-    <div class="card" style="border-radius: 0px;">
-        <div class=" card-body">
-            <p style="text-align: center;">Berikutt beberapa tabel database pada penjualan barang online</p>
-            <center>
-                <li>
-                    <a href="index.php">Customer</a>
-                </li>
-                <li>
-                    <a href="barang\index.php">Barang</a>
-                </li>
-                <li>
-                    <a href="kategori\index.php">Kategori</a>
-                </li>
-            </center>
+    
+    <p style="text-align: center;">Berikut beberapa tabel database pada penjualan barang online</p>
 
-            <p><b><i>Tabel Customer</i></b></p>
 
-            <table class="table table-striped-columns">
+    <p style="padding-left: 180px;"><b>Tabel Customer</b></p>
+    <li style="padding-left: 180px;">
+        <a href="tambah.php">Tambah Data Customer</a>
+    </li>
+
+    <table align="center" style="width: 1000px;" class="table table-striped-columns">
+        <tr>
+            <td width="200px" style="background-color: #5085c7;"> <b><i>ID Customer</i></b></td>
+            <td width="200px" style="background-color: #5085c7;"> <b><i>Nama Customer</i></b></td>
+            <td width="200px" style="background-color: #5085c7;"> <b><i>Alamat Customer</i></b></td>
+            <td width="200px" style="background-color: #5085c7; "> <b><i>Telpon Customer</i></b></td>
+            <td width="200px" style="background-color: #5085c7;"> <b><i>Username Customer <br></i></b></td>
+        </tr>
+        <?php if (mysqli_num_rows($query)) {
+        ?>
+            <?php
+            while ($data = mysqli_fetch_array($query)) {
+            ?>
                 <tr>
-                    <td width="100px" style="background-color: #5085c7;"> <b><i>ID Customer</i></b></td>
-                    <td width="400px" style="background-color: #5085c7;"> <b><i>Nama Customer</i></b></td>
-                    <td width="500px" style="background-color: #5085c7;"> <b><i>Alamat Customer</i></b></td>
-                    <td width="100px" style="background-color: #5085c7; "> <b><i>Telpon Customer</i></b></td>
-                    <td width="100px" style="background-color: #5085c7;"> <b><i>Username Customer <br></i></b></td>
+                    <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_customer']; ?></td>
+                    <td style="background-color: #9ea6a7;"><?php echo $data['nama_customer']; ?></td>
+                    <td style="background-color: #9ea6a7;"><?php echo $data['alamat_customer']; ?></td>
+                    <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['telp_customer']; ?></td>
+                    <td style="background-color: #9ea6a7;"><?php echo $data['username_customer']; ?></td>
                 </tr>
-                <?php if (mysqli_num_rows($query)) {
-                ?>
-                    <?php
-                    while ($data = mysqli_fetch_array($query)) {
-                    ?>
-                        <tr>
-                            <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_customer']; ?></td>
-                            <td style="background-color: #9ea6a7;"><?php echo $data['nama_customer']; ?></td>
-                            <td style="background-color: #9ea6a7;"><?php echo $data['alamat_customer']; ?></td>
-                            <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['telp_customer']; ?></td>
-                            <td style="background-color: #9ea6a7;"><?php echo $data['username_customer']; ?></td>
-                        </tr>
-                    <?php
-                    } ?>
-                <?php } ?>
-            </table>
-            <p style="font-family:'Times New Roman'; text-align: center; margin-top: 30px;"><b><i>~ finish ~</i></b></p>
-        </div>
-    </div>
+            <?php
+            } ?>
+        <?php } ?>
+    </table>
 
 </body>
 

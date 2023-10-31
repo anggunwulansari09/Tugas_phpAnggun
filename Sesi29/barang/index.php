@@ -10,7 +10,7 @@ $query = mysqli_query($connection, "SELECT * FROM barang");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tugas menyambungkan database</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
         .container {
             width: 800px;
@@ -35,42 +35,42 @@ $query = mysqli_query($connection, "SELECT * FROM barang");
     <nav class="navbar navbar-light" style="background-color: #03ffd9; height: 50px;">
         <img src="penjualan.png" alt="Logo" width="50" height="30" style="padding-top: 10px; padding-left: 10px; ">
     </nav>
-    <h2 style="text-align: center; font-family:'Times New Roman';"><u> Menyambungkan file ke database</u> </h2>
-    <div class="card" style="border-radius: 0px;">
-        <div class=" card-body">
-            <center>
-                <li>
-                    Klik disini untuk menampilkan tabel<a href="kategori/index.php"> Kategori</a>
-                </li>
-            </center>
-            <p><b><i>Tabel Barang</i></b></p>
-            <table table class="table table-striped-columns">
+    <h2 style="text-align: center; font-family:'Times New Roman';"><u><br> Menyambungkan file ke database</u> </h2><br>
+
+    <p style="padding-left: 180px;"><b><i>Tabel Barang</i></b></p>
+    <li style="padding-left: 180px;">
+        <a href="tambah_barang.php">Tambah Data Barang</a>
+    </li>
+    <center>
+        <li>
+            Klik disini untuk menampilkan tabel<a href="kategori/index.php"> Kategori</a>
+        </li>
+    </center>
+    <table align="center" style="width: 1000px;" table class="table table-striped-columns">
+        <tr>
+            <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>ID Barang</i></b></td>
+            <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>Nama Barang</i></b></td>
+            <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>Harga</i></b></td>
+            <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>Stok</i></b></td>
+            <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>ID Kategori</i></b></td>
+        </tr>
+        <?php if (mysqli_num_rows($query)) {
+        ?>
+            <?php
+            while ($data = mysqli_fetch_array($query)) {
+            ?>
                 <tr>
-                    <td width="100px" style="background-color: #03ffd9; text-align: center;"> <b><i>ID Barang</i></b></td>
-                    <td width="400px" style="background-color: #03ffd9; text-align: center;"> <b><i>Nama Barang</i></b></td>
-                    <td width="400px" style="background-color: #03ffd9; text-align: center;"> <b><i>Harga</i></b></td>
-                    <td width="400px" style="background-color: #03ffd9; text-align: center;"> <b><i>Stok</i></b></td>
-                    <td width="400px" style="background-color: #03ffd9; text-align: center;"> <b><i>ID Kategori</i></b></td>
+                    <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_barang']; ?></td>
+                    <td style="background-color: #9ea6a7;"><?php echo $data['nama_barang']; ?></td>
+                    <td style="background-color: #9ea6a7; text-align: center;"><?php echo "Rp" . number_format($data['harga']); ?></td>
+                    <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['stok']; ?></td>
+                    <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_kategori']; ?></td>
                 </tr>
-                <?php if (mysqli_num_rows($query)) {
-                ?>
-                    <?php
-                    while ($data = mysqli_fetch_array($query)) {
-                    ?>
-                        <tr>
-                            <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_barang']; ?></td>
-                            <td style="background-color: #9ea6a7;"><?php echo $data['nama_barang']; ?></td>
-                            <td style="background-color: #9ea6a7; text-align: center;"><?php echo "Rp" . number_format($data['harga']); ?></td>
-                            <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['stok']; ?></td>
-                            <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_kategori']; ?></td>
-                        </tr>
-                    <?php
-                    } ?>
-                <?php } ?>
-            </table>
-            <p style="font-family:'Times New Roman'; text-align: center; margin-top: 10px;"><b><i>~ finish ~</i></b></p>
-        </div>
-    </div>
+            <?php
+            } ?>
+        <?php } ?>
+    </table>
+    <p style="font-family:'Times New Roman'; text-align: center; margin-top: 10px;"><b><i>~ finish ~</i></b></p>
 </body>
 
 </html>
