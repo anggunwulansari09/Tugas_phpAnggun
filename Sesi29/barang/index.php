@@ -16,36 +16,43 @@ $query = mysqli_query($connection, "SELECT * FROM barang");
             width: 800px;
             margin: auto;
         }
-
-        .card {
-            height: 250px;
-            box-shadow: 0px 0px 10px 2px #9ea6a7;
-            width: 32rem;
-            padding-left: 2px;
-            padding-right: 2px;
-            margin-top: 100px;
-            margin-left: 400px;
-        }
     </style>
 </head>
 
-<body>
-    </nav>
-    <!-- As a heading navbar -->
-    <nav class="navbar navbar-light" style="background-color: #03ffd9; height: 50px;">
-        <img src="penjualan.png" alt="Logo" width="50" height="30" style="padding-top: 10px; padding-left: 10px; ">
-    </nav>
-    <h2 style="text-align: center; font-family:'Times New Roman';"><u><br> Menyambungkan file ke database</u> </h2><br>
+<body style="background-color: #374766;">
 
-    <p style="padding-left: 180px;"><b><i>Tabel Barang</i></b></p>
-    <li style="padding-left: 180px;">
-        <a href="tambah_barang.php">Tambah Data Barang</a>
-    </li>
+    <!-- navbar dan menu -->
+    <nav class="navbar navbar-expand-lg bg-body-#ffd903;" style="background-color: #ffd903; height: 50px;">
+        <div class="container-fluid">
+            <img src="penjualan.png" alt="Logo" width="70" height="40" style="padding-top: 2px; ">
+            <a class="navbar-brand" href="#" style="margin-left: 10px; font-family:Times New Roman;font-size: 25px;">Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="http://localhost/Tugas_php/Sesi29/index.php" style="margin-left: 900px; font-family:Times New Roman; font-size: 20px;">Customer</a>
+                    <a class="nav-link" href="http://localhost/Tugas_php/Sesi29/barang/index.php" style="font-family:Times New Roman; font-size: 20px;">Barang</a>
+                    <a class="nav-link" href="http://localhost/Tugas_php/Sesi29/kategori/index.php" style="font-family:Times New Roman; font-size: 20px;">Kategori</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- end navbar -->
+    <h2 style="text-align: center; font-family:'Times New Roman'; color: white; "><u> <br>Toko Sembako Murah</u> </h2>
+    <p style="text-align: center; color: skyblue;">Selamat Datang Di Toko Sembako Murah</p>
+    <p style="padding-left: 170px; color: white;"><b><i><br>Tabel Barang</i></b></p>
+    <!-- button tambah -->
+    <p style="padding-left: 170px;">
+        <a class="btn btn-primary btn-sm" href="tambah_barang.php" role="button">Tambah Data</a>
+    </p>
+    <!-- halaman kategori -->
     <center>
-        <li>
+        <li style="color: skyblue;">
             Klik disini untuk menampilkan tabel<a href="kategori/index.php"> Kategori</a>
         </li>
     </center>
+    <!-- tabel barang -->
     <table align="center" style="width: 1000px;" table class="table table-striped-columns">
         <tr>
             <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>ID Barang</i></b></td>
@@ -53,6 +60,7 @@ $query = mysqli_query($connection, "SELECT * FROM barang");
             <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>Harga</i></b></td>
             <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>Stok</i></b></td>
             <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>ID Kategori</i></b></td>
+            <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>Aksi</i></b></td>
         </tr>
         <?php if (mysqli_num_rows($query)) {
         ?>
@@ -65,12 +73,25 @@ $query = mysqli_query($connection, "SELECT * FROM barang");
                     <td style="background-color: #9ea6a7; text-align: center;"><?php echo "Rp" . number_format($data['harga']); ?></td>
                     <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['stok']; ?></td>
                     <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_kategori']; ?></td>
+                    <td align="center">
+                        <a href="edit_barang.php?id_barang=<?php echo $data['id_barang']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="delete_barang.php?id_barang=<?php echo $data['id_barang']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
                 </tr>
             <?php
             } ?>
         <?php } ?>
     </table>
-    <p style="font-family:'Times New Roman'; text-align: center; margin-top: 10px;"><b><i>~ finish ~</i></b></p>
+    <!-- button kembali -->
+    <p style="padding-left: 1110px;">
+        <a class="btn btn-dark btn-sm" href="http://localhost/Tugas_php/Sesi29/index.php" role="button">Kembali</a>
+    </p>
+    <!-- footer -->
+    <footer>
+        <div class="text-center p-4" style="background-color: #121724; height: 20px;">
+            <p style="color: white;">© 2021 Copyright: anggun wulan sari <br></p>
+        </div>
+    </footer>
 </body>
 
 </html>

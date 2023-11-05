@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tambah data Barang </title>
+    <title>Edit data customer </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
         .container {
@@ -13,6 +13,17 @@
         }
     </style>
 </head>
+<?php
+
+include("connection.php");
+$id_kategori = $_GET['id_kategori'];
+$kategoris = mysqli_query($connection, " SELECT * FROM kategori WHERE id_kategori = '$id_kategori'");
+
+foreach ($kategoris as $kategori) {
+    $id_kategori = $kategori['id_kategori'];
+    $nama_kategori = $kategori['nama_kategori'];
+}
+?>
 
 <body style="background-color: #8aa0db;">
     <!-- navbar dan menu -->
@@ -33,37 +44,19 @@
         </div>
     </nav>
     <!-- tabel -->
-    <form action="proses_barang.php" method="post">
-        <h4 style="margin-top: 50px;  text-align: center; margin-right: 115px;">Tambah Data Barang</h4>
-        <p style="text-align: center; ">Silahkan lengkapi data untuk menambahkannya </p>
+    <form action="proses_edit_kategori.php?id_kategori=<?php echo $id_kategori; ?>" method="post">
+        <h4 style="margin-top: 50px;  text-align: center; margin-right: 115px;">Edit Data Kategori</h4>
+        <p style="text-align: center; ">Silahkan Untuk Melengkapi data yang benar</p>
         <table width="25%" align="center">
             <tr>
                 <td>
-                    Nama Barang
+                    Nama Kategori
                 </td>
-                <td><input type="text" name="nama_barang" class="form-control" required=""></td>
+                <td><input type="text" class="form-control" name="nama_kategori" value="<?php echo $nama_kategori; ?>"></td>
             </tr>
-            <tr>
-                <td>
-                    Harga
-                </td>
-                <td><input type="number" name="harga" class="form-control" required=""></td>
-            </tr>
-            <tr>
-                <td>
-                    Stok
-                </td>
-                <td><input type="number" name="stok" class="form-control"></td>
-            </tr>
-            <tr>
-                <td>
-                    ID Barang
-                </td>
-                <td><input type="number" name="id_kategori" class="form-control" required=""></td>
-            </tr>
+
             <td></td>
-            <td><input type="submit" name="submit" value="Submit" class="btn btn-primary btn-sm"></td>
-            </tr>
+            <td> <input type="submit" name="submit" value="submit" class="btn btn-primary btn-sm"></td>
         </table>
     </form>
 </body>

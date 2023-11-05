@@ -5,63 +5,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tambah data customer </title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
         .container {
             width: 800px;
             margin: auto;
         }
-
-        .card {
-            height: 315px;
-            box-shadow: 0px 0px 10px 2px #9ea6a7;
-            width: 32rem;
-            padding-left: 2px;
-            padding-right: 2px;
-            margin-top: 100px;
-            margin-left: 400px;
-        }
     </style>
 </head>
 
-<body>
+<body style="background-color: #8aa0db;">
+    <!-- navbar dan menu -->
+    <nav class="navbar navbar-expand-lg bg-body-#ffd903;" style="background-color: #ffd903; height: 50px;">
+        <div class="container-fluid">
+            <img src="penjualan.png" alt="Logo" width="70" height="40" style="padding-top: 2px; ">
+            <a class="navbar-brand" href="#" style="margin-left: 10px; font-family:Times New Roman;font-size: 25px;">Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="http://localhost/PHP/Sesi29/index.php" style="margin-left: 900px; font-family:Times New Roman; font-size: 20px;">Customer</a>
+                    <a class="nav-link" href="http://localhost/PHP/Sesi29/barang/index.php" style="font-family:Times New Roman; font-size: 20px;">Barang</a>
+                    <a class="nav-link" href="http://localhost/PHP/Sesi29/kategori/index.php" style="font-family:Times New Roman; font-size: 20px;">Kategori</a>
+                </div>
+            </div>
+        </div>
     </nav>
-    <!-- As a heading navbar -->
-    <nav class="navbar navbar-light" style="background-color: #5085c7; height: 50px;">
-        <img src="penjualan.png" alt="Logo" width="50" height="30" style="padding-top: 10px; padding-left: 10px; ">
-    </nav>
+    <!-- tabel -->
     <form action="proses.php" method="post">
-        <h3>Tambah Data Customer</h3>
-        <table width="25%">
+        <h4 style="margin-top: 50px;  text-align: center; margin-right: 100px;">Tambah Data Customer</h4>
+        <p style="text-align: center; ">Silahkan lengkapi data untuk menambahkannya </p>
+        <table width="25%" align="center">
             <tr>
                 <td>
                     Nama
                 </td>
-                <td><input type="text" name="nama_customer" class="form-control"></td>
+                <td><input type="text" name="nama_customer" class="form-control" required=""></td>
             </tr>
             <tr>
                 <td>
                     Alamat
                 </td>
-                <td> <textarea class="form-control" name="alamat_customer" id="" rows="10"></textarea></td>
+                <td> <textarea class="form-control" name="alamat_customer" id="" rows="10" required=""></textarea></td>
             </tr>
             <tr>
                 <td>
                     Telpon
                 </td>
-                <td><input type="number" name="telp_customer" class="form-control"></td>
+                <td><input type="number" name="telp_customer" class="form-control" required=""></td>
             </tr>
             <tr>
                 <td>
                     Username
                 </td>
-                <td><input type="text" name="username_customer" class="form-control"></td>
+                <td><input type="text" name="username_customer" class="form-control" required=""></td>
             </tr>
             <td></td>
-            <td><input type="submit" name="submit" value="submit" class="btn-btn-primary"></td>
+            <td><input type="submit" name="submit" value="Submit" class="btn btn-primary btn-sm"></td>
             </tr>
         </table>
     </form>
+
 </body>
 
 </html>
