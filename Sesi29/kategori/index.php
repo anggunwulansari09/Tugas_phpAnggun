@@ -63,41 +63,43 @@ $query = mysqli_query($connection, "SELECT * FROM kategori");
     <!-- end navbar -->
     <h2 style="text-align: center; font-family:'Times New Roman'; color: white; "><u> <br>Toko Sembako Murah</u> </h2>
     <p style="text-align: center; color: skyblue;">Selamat Datang Di Toko Sembako Murah</p>
-    <p style="padding-left: 280px; color: white;"><b><i><br>Tabel Kategori</i></b></p>
+    <p style="padding-left: 180px; color: white;"><b><i><br>Tabel Kategori</i></b></p>
 
     <!-- button tambah -->
-    <p style="padding-left: 280px;">
+    <p style="padding-left: 180px;">
         <a class="btn btn-primary btn-sm" href="tambah_kategori.php" role="button">Tambah Data</a>
     </p>
 
     <!-- tabel kategori -->
-    <table id="table-kategori" align="center" style="width: 1000px;" class="table table-striped-columns">
-        <thead>
-            <tr>
-                <td width="200px" style="background-color: #ffd903;text-align: center;"> <b><i>ID Kategori</i></b></td>
-                <td width="400px" style="background-color: #ffd903;text-align: center;"> <b><i>Nama Kategori</i></b></td>
-                <td width="200px" style="background-color: #ffd903;text-align: center;"> <b><i>Aksi</i></b></td>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (mysqli_num_rows($query)) {
-            ?>
-                <?php
-                while ($data = mysqli_fetch_array($query)) {
+    <div style="width:1000px; margin:0 auto;">
+        <table id="table-kategori" class="table table-striped-columns">
+            <thead>
+                <tr>
+                    <td width="200px" style="background-color: #ffd903;text-align: center;"> <b><i>ID Kategori</i></b></td>
+                    <td width="400px" style="background-color: #ffd903;text-align: center;"> <b><i>Nama Kategori</i></b></td>
+                    <td width="200px" style="background-color: #ffd903;text-align: center;"> <b><i>Aksi</i></b></td>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (mysqli_num_rows($query)) {
                 ?>
-                    <tr>
-                        <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_kategori']; ?></td>
-                        <td style="background-color: #9ea6a7;"><?php echo $data['nama_kategori']; ?></td>
-                        <td align="center">
-                            <a href="edit_kategori.php?id_kategori=<?php echo $data['id_kategori']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="javascript:void(0);" onclick="confirmDelete(<?php echo $data['id_kategori']; ?>);" class="btn btn-danger btn-sm">Delete</a>
-                        </td>
-                    </tr>
-                <?php
-                } ?>
-            <?php } ?>
-        </tbody>
-    </table>
+                    <?php
+                    while ($data = mysqli_fetch_array($query)) {
+                    ?>
+                        <tr>
+                            <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_kategori']; ?></td>
+                            <td style="background-color: #9ea6a7;"><?php echo $data['nama_kategori']; ?></td>
+                            <td align="center">
+                                <a href="edit_kategori.php?id_kategori=<?php echo $data['id_kategori']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="javascript:void(0);" onclick="confirmDelete(<?php echo $data['id_kategori']; ?>);" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    <?php
+                    } ?>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
     <!-- button kembali-->
     <table>
         <tr>

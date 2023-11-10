@@ -69,55 +69,57 @@ $query = mysqli_query($connection, "SELECT * FROM Customer");
         <a class="btn btn-primary btn-sm" href="tambah.php" role="button">Tambah Data </a>
     </p>
     <!-- tabel customer -->
-    <table id="table-customer" align="center" style="width: 1000px;" class="table table-striped-columns">
-        <thead>
-            <tr>
-                <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>ID Customer</i></b></td>
-                <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Nama Customer</i></b></td>
-                <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Alamat Customer</i></b></td>
-                <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Telpon Customer</i></b></td>
-                <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Username Customer <br></i></b></td>
-                <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Aksi <br></i></b></td>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (mysqli_num_rows($query)) {
-            ?>
-                <?php
-                while ($data = mysqli_fetch_array($query)) {
+    <div style="width:1000px; margin:0 auto;">
+        <table id="table-customer" class="table table-striped-columns">
+            <thead>
+                <tr>
+                    <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>ID Customer</i></b></td>
+                    <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Nama Customer</i></b></td>
+                    <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Alamat Customer</i></b></td>
+                    <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Telpon Customer</i></b></td>
+                    <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Username Customer <br></i></b></td>
+                    <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Aksi <br></i></b></td>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (mysqli_num_rows($query)) {
                 ?>
-                    <tr>
-                        <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_customer']; ?></td>
-                        <td style="background-color: #9ea6a7;"><?php echo $data['nama_customer']; ?></td>
-                        <td style="background-color: #9ea6a7;"><?php echo $data['alamat_customer']; ?></td>
-                        <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['telp_customer']; ?></td>
-                        <td style="background-color: #9ea6a7;"><?php echo $data['username_customer']; ?></td>
-                        <td align="center">
-                            <a href="edit.php?id_customer=<?php echo $data['id_customer']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="javascript:void(0);" onclick="confirmDelete(<?php echo $data['id_customer']; ?>);" class="btn btn-danger btn-sm">Delete</a>
-                        </td>
-                    </tr>
-                <?php
-                } ?>
-            <?php } ?>
-        </tbody>
-    </table>
-    <!-- table menu -->
-    <table align="center" style="background-color: white;">
-        <p style="text-align: center; color: skyblue;">Untuk input data barang dan kategori bisa melalui link ini atau menu di navbar</p>
-        <tr>
-            <td>
-                <a href="index.php">Customer |</a>
-            </td>
-            <td>
-                <a href="barang\index.php">Barang |</a>
-            </td>
-            <td>
-                <a href="kategori\index.php">Kategori</a>
-            </td>
-        </tr>
-        </div>
-    </table>
+                    <?php
+                    while ($data = mysqli_fetch_array($query)) {
+                    ?>
+                        <tr>
+                            <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_customer']; ?></td>
+                            <td style="background-color: #9ea6a7;"><?php echo $data['nama_customer']; ?></td>
+                            <td style="background-color: #9ea6a7;"><?php echo $data['alamat_customer']; ?></td>
+                            <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['telp_customer']; ?></td>
+                            <td style="background-color: #9ea6a7;"><?php echo $data['username_customer']; ?></td>
+                            <td align="center">
+                                <a href="edit.php?id_customer=<?php echo $data['id_customer']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="javascript:void(0);" onclick="confirmDelete(<?php echo $data['id_customer']; ?>);" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    <?php
+                    } ?>
+                <?php } ?>
+            </tbody>
+        </table>
+        <!-- table menu -->
+        <table align="center" style="background-color: white;">
+            <p style="text-align: center; color: skyblue;">Untuk input data barang dan kategori bisa melalui link ini atau menu di navbar</p>
+            <tr>
+                <td>
+                    <a href="index.php">Customer |</a>
+                </td>
+                <td>
+                    <a href="barang\index.php">Barang |</a>
+                </td>
+                <td>
+                    <a href="kategori\index.php">Kategori</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
     <p><br></p>
     <!-- footer -->
     <footer>
@@ -125,6 +127,7 @@ $query = mysqli_query($connection, "SELECT * FROM Customer");
             <p style="color: white;">© 2021 Copyright: anggun wulan sari <br></p>
         </div>
     </footer>
+
 </body>
 
 </html>

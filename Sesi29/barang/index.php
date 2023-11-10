@@ -75,39 +75,41 @@ $query = mysqli_query($connection, "SELECT * FROM barang");
         </li>
     </center>
     <!-- tabel barang -->
-    <table id="table-barang" align="center" style="width: 1000px;" table class="table table-striped-columns">
-        <thead>
-            <tr>
-                <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>ID Barang</i></b></td>
-                <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>Nama Barang</i></b></td>
-                <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>Harga</i></b></td>
-                <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>Stok</i></b></td>
-                <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>ID Kategori</i></b></td>
-                <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>Aksi</i></b></td>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (mysqli_num_rows($query)) {
-            ?>
-                <?php
-                while ($data = mysqli_fetch_array($query)) {
+    <div style="width:1000px; margin:0 auto;">
+        <table id="table-barang" class="table table-striped-columns">
+            <thead>
+                <tr>
+                    <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>ID Barang</i></b></td>
+                    <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>Nama Barang</i></b></td>
+                    <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>Harga</i></b></td>
+                    <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>Stok</i></b></td>
+                    <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>ID Kategori</i></b></td>
+                    <td width="200px" style="background-color: #03ffd9; text-align: center;"> <b><i>Aksi</i></b></td>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (mysqli_num_rows($query)) {
                 ?>
-                    <tr>
-                        <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_barang']; ?></td>
-                        <td style="background-color: #9ea6a7;"><?php echo $data['nama_barang']; ?></td>
-                        <td style="background-color: #9ea6a7; text-align: center;"><?php echo "Rp" . number_format($data['harga']); ?></td>
-                        <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['stok']; ?></td>
-                        <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_kategori']; ?></td>
-                        <td align="center">o
-                            <a href="edit_barang.php?id_barang=<?php echo $data['id_barang']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="javascript:void(0);" onclick="confirmDelete(<?php echo $data['id_barang']; ?>);" class="btn btn-danger btn-sm">Delete</a>
-                        </td>
-                    </tr>
-                <?php
-                } ?>
-            <?php } ?>
-        </tbody>
-    </table>
+                    <?php
+                    while ($data = mysqli_fetch_array($query)) {
+                    ?>
+                        <tr>
+                            <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_barang']; ?></td>
+                            <td style="background-color: #9ea6a7;"><?php echo $data['nama_barang']; ?></td>
+                            <td style="background-color: #9ea6a7; text-align: center;"><?php echo "Rp" . number_format($data['harga']); ?></td>
+                            <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['stok']; ?></td>
+                            <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_kategori']; ?></td>
+                            <td align="center">o
+                                <a href="edit_barang.php?id_barang=<?php echo $data['id_barang']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="javascript:void(0);" onclick="confirmDelete(<?php echo $data['id_barang']; ?>);" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    <?php
+                    } ?>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
     <!-- button kembali -->
     <p style="padding-left: 1110px;">
         <a class="btn btn-dark btn-sm" href="http://localhost/Tugas_php/Sesi29/index.php" role="button">Kembali</a>
