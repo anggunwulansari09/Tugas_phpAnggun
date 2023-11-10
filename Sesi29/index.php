@@ -11,12 +11,34 @@ $query = mysqli_query($connection, "SELECT * FROM Customer");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tugas menyambungkan database</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <style>
         .container {
             width: 800px;
             margin: auto;
         }
     </style>
+    <!-- javascript -->
+    <script>
+        function confirmDelete(id) {
+            if (confirm("Apakah kamu yakin ingin menghapusnya?")) { // pop up  peringatan data yang akan dihapus
+                window.location.href = "delete.php?id_customer=" + id;
+            }
+        }
+    </script>
+    <!-- jquerry -->
+    <script>
+        $(document).ready(function() {
+            $('#table-customer').DataTable();
+        });
+    </script>
 </head>
 
 <body style="background-color: #374766;">
@@ -47,34 +69,38 @@ $query = mysqli_query($connection, "SELECT * FROM Customer");
         <a class="btn btn-primary btn-sm" href="tambah.php" role="button">Tambah Data </a>
     </p>
     <!-- tabel customer -->
-    <table align="center" style="width: 1000px;" class="table table-striped-columns">
-        <tr>
-            <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>ID Customer</i></b></td>
-            <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Nama Customer</i></b></td>
-            <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Alamat Customer</i></b></td>
-            <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Telpon Customer</i></b></td>
-            <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Username Customer <br></i></b></td>
-            <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Aksi <br></i></b></td>
-        </tr>
-        <?php if (mysqli_num_rows($query)) {
-        ?>
-            <?php
-            while ($data = mysqli_fetch_array($query)) {
+    <table id="table-customer" align="center" style="width: 1000px;" class="table table-striped-columns">
+        <thead>
+            <tr>
+                <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>ID Customer</i></b></td>
+                <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Nama Customer</i></b></td>
+                <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Alamat Customer</i></b></td>
+                <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Telpon Customer</i></b></td>
+                <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Username Customer <br></i></b></td>
+                <td width="200px" style="background-color: #5085c7; text-align: center;"> <b><i>Aksi <br></i></b></td>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (mysqli_num_rows($query)) {
             ?>
-                <tr>
-                    <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_customer']; ?></td>
-                    <td style="background-color: #9ea6a7;"><?php echo $data['nama_customer']; ?></td>
-                    <td style="background-color: #9ea6a7;"><?php echo $data['alamat_customer']; ?></td>
-                    <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['telp_customer']; ?></td>
-                    <td style="background-color: #9ea6a7;"><?php echo $data['username_customer']; ?></td>
-                    <td align="center">
-                        <a href="edit.php?id_customer=<?php echo $data['id_customer']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="delete.php?id_customer=<?php echo $data['id_customer']; ?>" class="btn btn-danger btn-sm">Delete</a>
-                    </td>
-                </tr>
-            <?php
-            } ?>
-        <?php } ?>
+                <?php
+                while ($data = mysqli_fetch_array($query)) {
+                ?>
+                    <tr>
+                        <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['id_customer']; ?></td>
+                        <td style="background-color: #9ea6a7;"><?php echo $data['nama_customer']; ?></td>
+                        <td style="background-color: #9ea6a7;"><?php echo $data['alamat_customer']; ?></td>
+                        <td style="background-color: #9ea6a7; text-align: center;"><?php echo $data['telp_customer']; ?></td>
+                        <td style="background-color: #9ea6a7;"><?php echo $data['username_customer']; ?></td>
+                        <td align="center">
+                            <a href="edit.php?id_customer=<?php echo $data['id_customer']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="javascript:void(0);" onclick="confirmDelete(<?php echo $data['id_customer']; ?>);" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                <?php
+                } ?>
+            <?php } ?>
+        </tbody>
     </table>
     <!-- table menu -->
     <table align="center" style="background-color: white;">

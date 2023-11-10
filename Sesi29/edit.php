@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Customer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        function validateForm() {
+            var nama_customer = document.forms["editCustomerForm"]["nama_customer"].value;
+            var alamat_customer = document.forms["editCustomerForm"]["alamat_customer"].value;
+            var telp_customer = document.forms["editCustomerForm"]["telp_customer"].value;
+            var username_customer = document.forms["editCustomerForm"]["username_customer"].value;
+
+            if (nama_customer == "" || alamat_customer == "" || telp_customer == "" || username_customer == "") {
+                alert("Semua Field harus diisi !"); //pop up data yang harus diisi
+                return false;
+            }
+        }
+    </script>
 </head>
 <?php
 
@@ -31,15 +46,15 @@ foreach ($customers as $customer) {
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="http://localhost/PHP/Sesi29/index.php" style="margin-left: 900px; font-family:Times New Roman; font-size: 20px;">Customer</a>
-                    <a class="nav-link" href="http://localhost/PHP/Sesi29/barang/index.php" style="font-family:Times New Roman; font-size: 20px;">Barang</a>
-                    <a class="nav-link" href="http://localhost/PHP/Sesi29/kategori/index.php" style="font-family:Times New Roman; font-size: 20px;">Kategori</a>
+                    <a class="nav-link active" aria-current="page" href="http://localhost/Tugas_php/Sesi29/index.php" style="margin-left: 900px; font-family:Times New Roman; font-size: 20px;">Customer</a>
+                    <a class="nav-link" href="http://localhost/Tugas_php/Sesi29/barang/index.php" style="font-family:Times New Roman; font-size: 20px;">Barang</a>
+                    <a class="nav-link" href="http://localhost/Tugas_php/Sesi29/kategori/index.php" style="font-family:Times New Roman; font-size: 20px;">Kategori</a>
                 </div>
             </div>
         </div>
     </nav>
     <!-- tabel -->
-    <form action="proses_edit_customer.php?id_customer=<?php echo $id_customer; ?>" method="post">
+    <form name="editCustomerForm" action="proses_edit_customer.php?id_customer=<?php echo $id_customer; ?>" method="post" onsubmit="return validateForm();">
         <h4 style="margin-top: 50px;  text-align: center; margin-right: 115px;">Edit Data Customer</h4>
         <p style="text-align: center; ">Silahkan Untuk Melengkapi data yang benar</p>
         <table width="25%" align="center">
@@ -53,7 +68,7 @@ foreach ($customers as $customer) {
                 <td>
                     Alamat
                 </td>
-                <td> <textarea class="form-control" name="alamat_customer" id="" rows="10"><?php echo $alamat_customer; ?>"</textarea></td>
+                <td> <textarea class="form-control" name="alamat_customer" id="" rows="10"><?php echo $alamat_customer; ?></textarea></td>
             </tr>
             <tr>
                 <td>
